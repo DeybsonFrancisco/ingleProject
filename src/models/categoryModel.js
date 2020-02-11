@@ -1,7 +1,7 @@
-const mongoose =  require('./../../config/db')
+const mongoose = require("./../../config/db");
 
 const CategorySchema = mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
@@ -9,12 +9,14 @@ const CategorySchema = mongoose.Schema({
         type: String,
         required: true
     },
-    words:{
-        type: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Word"
-        }]
+    words: {
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Word"
+            }
+        ]
     }
- })
-var category = mongoose.model('Category', CategorySchema)
-    module.exports = category
+});
+const category = mongoose.model("Category", CategorySchema);
+module.exports = category;

@@ -1,21 +1,22 @@
-const mongoose = require('../../config/db')
+const mongoose = require("../../config/db");
 
 const contextSchema = mongoose.Schema({
-
     title: {
         type: String,
-        required: true,
+        required: true
     },
     description: {
         type: String,
         required: true
     },
     words: {
-        type: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Word"
-        }]
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Word"
+            }
+        ]
     }
-})
-var context = mongoose.model('Context', contextSchema)
-module.exports = context
+});
+const context = mongoose.model("Context", contextSchema);
+module.exports = context;
