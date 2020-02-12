@@ -3,16 +3,8 @@ const Word = require("../models/wordsModel");
 const Category = require("../models/categoryModel");
 const Context = require("../models/contextModel");
 
-class WordController {
-    /* get addWord() {
-        return this.create;
-    }
-*/
-    get listOfWords() {
-        return this.listOfWords();
-    }
-
-    static async create(req, res) {
+module.exports = class WordController {
+    static async addWord(req, res) {
         try {
             const word = await Word.create(req.body);
 
@@ -37,12 +29,16 @@ class WordController {
     }
 
     static async listOfWords(req, res) {
+        const { page, limit } = req.query;
+        const options = {
+            page,
+            limit
+        };
         try {
-            const words = await Word.find();
+            const words = await Word.paginate({}, options);
             return res.status(200).json(words);
         } catch (e) {
             return res.status("500").json({ e });
         }
     }
-}
-module.exports = new WordController();
+};

@@ -2,8 +2,17 @@ const Validation = require("express-validation");
 
 const controller = require("./controllers");
 const validate = require("./validatiors");
+const verifyToken = require("./middlewares/verifyToken");
 
 module.exports = function(app) {
+    app.route("/users").post(controller.userController.createUser);
+
+    app.route("/authorization").post(controller.authController.login);
+
+    app.use(verifyToken);
+
+    app.route("/users/:id").delete(controller.userController.deleteUser);
+
     app.route("/categorys")
         .get(controller.categoryController.listOfCategorys)
         .post(
