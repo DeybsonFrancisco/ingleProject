@@ -5,7 +5,6 @@ module.exports = class AuthController {
         try {
             const { userName, password } = req.body;
             const result = await User.Login(userName, password);
-            console.log(result);
 
             if (
                 result.msg === "userName não existe" ||

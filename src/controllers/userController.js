@@ -5,7 +5,6 @@ module.exports = class UserController {
         try {
             const { userName } = req.body;
             let user = await User.findOne({ userName });
-            console.log(user);
             if (user) {
                 return res.status("400").json({
                     info: "userName ja existe"
