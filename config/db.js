@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect("mongodb+srv://admin:admin@cluster0-wmbu5.mongodb.net/ingleProject
+", {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
