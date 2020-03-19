@@ -9,7 +9,7 @@ module.exports = function(app) {
 
     app.route("/authorization").post(controller.authController.login);
 
-    app.use(verifyToken);
+    //app.use(verifyToken);
 
     app.route("/users/:id").delete(controller.userController.deleteUser);
 
